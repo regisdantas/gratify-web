@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/gratify-web/static/js/main.6cda7480.js",
+    "main.js": "/gratify-web/static/js/main.51aac6a5.js",
     "static/media/logo.png": "/gratify-web/static/media/logo.1164200b72d8c1daf071.png",
     "index.html": "/gratify-web/index.html",
-    "main.6cda7480.js.map": "/gratify-web/static/js/main.6cda7480.js.map"
+    "main.51aac6a5.js.map": "/gratify-web/static/js/main.51aac6a5.js.map"
   },
   "entrypoints": [
-    "static/js/main.6cda7480.js"
+    "static/js/main.51aac6a5.js"
   ]
 }
