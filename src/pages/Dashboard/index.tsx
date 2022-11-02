@@ -1,9 +1,10 @@
-import React from 'react';
-import { Form, EntryList, Entry } from './styles';
-import Header from '../../components/Header';
-import Status from '../../components/Status';
-import { useStatus } from '../../hooks/useStatus';
-import uuid from 'react-uuid';
+import React from "react";
+import { AppContainer, EntryList } from "./styles";
+import Header from "../../components/Header";
+import Status from "../../components/Status";
+import Card from "../../components/Card";
+import { useStatus } from "../../hooks/useStatus";
+import uuid from "react-uuid";
 
 interface IEntry {
   id: string;
@@ -12,42 +13,32 @@ interface IEntry {
 }
 
 const Dashboard: React.FC = () => {
-  const startDate = new Date().toISOString().split('T')[0];
+  const startDate = new Date().toISOString().split("T")[0];
   const [selectedDate, setSelectedDate] = React.useState<string>(startDate);
   const [entries, setEntries] = React.useState<IEntry[]>([]);
-  const [newEntryContent, setNewEntryContent] = React.useState<string>('');
-  const contentInputRef = React.useRef<HTMLInputElement | null>(null);
   const [inputStatus, setInputStatus] = useStatus(null);
 
   const handleDateChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedDate(event.target.value);
   };
 
-  function handleNewEntryChanged(
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void {
-    setNewEntryContent(event.target.value);
+  const saveEntries = (newEntries: IEntry[]) => {
+    localStorage.setItem("gratify_entries", JSON.stringify(newEntries));
+    setEntries(newEntries);
   }
 
-  async function handleNewEntryAdded(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function handleAddNewEntry(event: React.FormEvent<HTMLButtonElement>) {
     const newEntry: IEntry = {
       id: uuid(),
-      content: newEntryContent,
+      content: "",
       date: selectedDate,
     };
     const newEntries = [...entries, newEntry];
-    console.log(newEntries);
-    localStorage.setItem('gratify_entries', JSON.stringify(newEntries));
-    setEntries(newEntries);
-    setNewEntryContent('');
-    if (contentInputRef.current) {
-      contentInputRef.current.value = '';
-    }
+    saveEntries(newEntries);
   }
 
   React.useEffect(() => {
-    const entriesStr = localStorage.getItem('gratify_entries');
+    const entriesStr = localStorage.getItem("gratify_entries");
     try {
       if (entriesStr) {
         const storedEntries = JSON.parse(entriesStr);
@@ -60,32 +51,48 @@ const Dashboard: React.FC = () => {
     }
   }, []);
 
+  const handleDeleteEntry = (id: string) => {
+    const newEntries = entries.filter(entry => entry.id !== id);
+    saveEntries(newEntries);
+  }
+
+  const handleChangeEntry = (id: string, content: string) => {
+    const newEntries = entries.map((entry) => { 
+      if (entry.id === id) {
+        entry.content = content;
+      }
+      return entry;
+    });
+    saveEntries(newEntries);
+  }
+
   return (
     <>
       <Header title="Gratify" />
       <Status status={inputStatus} />
-      <Form onSubmit={handleNewEntryAdded}>
+      <AppContainer>
         <input
           type="date"
           defaultValue={startDate}
           onChange={handleDateChanged}
         ></input>
-        <input
-          type="text"
-          ref={contentInputRef}
-          placeholder="What are you grateful for this day?"
-          onChange={handleNewEntryChanged}
-        />
-      </Form>
+      
       <EntryList>
-        {entries.map(entry => {
+        {entries.map((entry) => {
           return entry.date === selectedDate ? (
-            <Entry key={entry.id}>{entry.content}</Entry>
+            <Card
+              id={entry.id}
+              content={entry.content}
+              onDeleteCard={handleDeleteEntry}
+              onChangeContent={handleChangeEntry}
+            />
           ) : (
             <></>
           );
         })}
       </EntryList>
+      <button onClick={handleAddNewEntry}>Add New</button>
+      </AppContainer>
     </>
   );
 };
