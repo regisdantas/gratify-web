@@ -1,5 +1,6 @@
 import React from "react";
-import { AppContainer, EntryList } from "./styles";
+import { AppContainer } from "../../styles/global";
+import { EntryList } from "./styles";
 import Header from "../../components/Header";
 import Status from "../../components/Status";
 import Card from "../../components/Card";
@@ -57,7 +58,7 @@ const Dashboard: React.FC = () => {
   }
 
   const handleChangeEntry = (id: string, content: string) => {
-    const newEntries = entries.map((entry) => { 
+    const newEntries = entries.map((entry) => {
       if (entry.id === id) {
         entry.content = content;
       }
@@ -76,7 +77,7 @@ const Dashboard: React.FC = () => {
           defaultValue={startDate}
           onChange={handleDateChanged}
         ></input>
-      
+
       <EntryList>
         {entries.map((entry) => {
           return entry.date === selectedDate ? (

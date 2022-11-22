@@ -1,11 +1,11 @@
-import React from 'react';
 import { GlobalStyles } from './styles/global';
-import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
 
 function App() {
+
   return (
     <>
-      <Dashboard />
+      <Login />
       <GlobalStyles />
     </>
   );
