@@ -4,15 +4,37 @@ import Header from "../../components/Header";
 import Status from "../../components/Status";
 import { useStatus } from "../../hooks/useStatus";
 import { FcGoogle } from 'react-icons/fc';
+import {GoogleAuthProvider, signInWithPopup, User} from 'firebase/auth';
+import {auth} from '../../services/firebase';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-const Login: React.FC = () => {
+interface ILoginProps {
+  login: (user: User) => void;
+}
+
+const Login: React.FC<ILoginProps> = ({login}:ILoginProps) => {
   const [inputStatus, setInputStatus] = useStatus(null);
+  const navigate = useNavigate();
+  const handleGoogleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        login(result.user);
+        navigate('/dashboard');
+      })
+      .catch((error) => {
+        console.log(error);
+        setInputStatus({type: "error", fields: "email", message: error.message});
+      });
+  }
+
   return (
     <>
-      <Header title="Gratify" />
+      <Header title="Gratify"/>
       <Status status={inputStatus} />
       <AppContainer>
-        <button><FcGoogle/>Sign in using Google Account</button>
+        <button onClick={handleGoogleSignIn}><FcGoogle/>Sign in using Google Account</button>
       </AppContainer>
     </>
   );

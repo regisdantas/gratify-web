@@ -3,9 +3,11 @@ import { AppContainer } from "../../styles/global";
 import { EntryList } from "./styles";
 import Header from "../../components/Header";
 import Status from "../../components/Status";
+import MenuBar from "../../components/MenuBar";
 import Card from "../../components/Card";
 import { useStatus } from "../../hooks/useStatus";
 import uuid from "react-uuid";
+import {User} from 'firebase/auth';
 
 interface IEntry {
   id: string;
@@ -13,7 +15,11 @@ interface IEntry {
   date: string;
 }
 
-const Dashboard: React.FC = () => {
+interface IDashboardProps {
+  user: User;
+}
+
+const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
   const startDate = new Date().toISOString().split("T")[0];
   const [selectedDate, setSelectedDate] = React.useState<string>(startDate);
   const [entries, setEntries] = React.useState<IEntry[]>([]);
@@ -70,6 +76,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Header title="Gratify" />
+      <MenuBar user={user}/>
       <Status status={inputStatus} />
       <AppContainer>
         <input
