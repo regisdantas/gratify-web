@@ -20,10 +20,13 @@ export const HeaderContainer = styled.header`
   }
   div {
     display: flex;
-    flex-direction: row;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    h1 {
+      width: 60%;
+    }
   }
 
   .topbar{

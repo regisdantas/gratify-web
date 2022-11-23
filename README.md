@@ -50,7 +50,7 @@ A WEB gratitude journaling application with user data stored in firebase databas
 
 ### License
 
-[MIT][license] � [Regis Dantas][author]
+[MIT][license] [Regis Dantas][author]
 
 [author]: https://www.linkedin.com/in/regismdantas/
 [license]: license
