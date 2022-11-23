@@ -20,7 +20,24 @@
 
 This application was created using ReactJS. This implements a WEB application for reporting daily gratitude journaling.
 
+### Technologies
+
+- TypeScript
+- ReactJS
+- Styled Components
+- Firebase
+- Jest
+
 ### ToDo
+
+[] - Add user database
+[] - Add logout
+[] - Add facebook authentication
+[] - Add save/get notes into/from firebase database
+[] - Add tests
+[] - Add CI/CD
+[] - Add i18n
+[] - Add dark mode
 
 ### Known Issues
 
