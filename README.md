@@ -18,7 +18,7 @@
 
 ### Description
 
-This application was created using ReactJS. This implements a WEB application for reporting daily gratitude journaling.
+A WEB gratitude journaling application with user data stored in firebase database, google and fgacebook authentication.
 
 ### Technologies
 
