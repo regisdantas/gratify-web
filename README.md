@@ -28,19 +28,23 @@ A WEB gratitude journaling application with user data stored in firebase databas
 - Firebase
 - Jest
 
-![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/typescript.png) ![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/react.png) ![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/styled%20components.png) ![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/firebase.png) ![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/jest.png)
+![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/typescript.png)&nbsp;&nbsp;&nbsp;&nbsp;
+![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/react.png)&nbsp;&nbsp;&nbsp;&nbsp;
+![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/styled-components.png)&nbsp;&nbsp;&nbsp;&nbsp;
+![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/firebase.png)&nbsp;&nbsp;&nbsp;&nbsp;
+![](https://raw.githubusercontent.com/regisdantas/gratify-web/main/docs/jest.png)
 
 ### ToDo
 
-[] - Add user database
-[] - Add logout
-[] - Add facebook authentication
-[] - Add save/get notes into/from firebase database
-[] - Add tests
-[] - Add CI/CD
-[] - Add i18n
-[] - Add dark mode
-[] - Add Google AddSense
+- [ ] - Add user database
+- [ ] - Add logout
+- [ ] - Add facebook authentication
+- [ ] - Add save/get notes into/from firebase database
+- [ ] - Add tests
+- [ ] - Add CI/CD
+- [ ] - Add i18n
+- [ ] - Add dark mode
+- [ ] - Add Google AddSense
 
 ### Known Issues
 
