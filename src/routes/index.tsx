@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import {User} from 'firebase/auth';
+import {UserAuth} from '../contexts/AuthContext';
 
 const Login = React.lazy(
   () =>
@@ -16,46 +17,37 @@ const Dashboard = React.lazy(
     ),
 );
 
-const checkAuth = (user: User): boolean => {
-  return (user !== null && user.displayName !== undefined);
-};
-
 interface IProtectedRouteProps {
   children: JSX.Element;
-  user: User;
-  isAuthenticated: (user: User) => boolean;
 }
 
-export const ProtectedRoute = ({ children, user, isAuthenticated}: IProtectedRouteProps) => {
-  return isAuthenticated(user) ? children : <Navigate to="/login" />;
+export const ProtectedRoute = ({ children }: IProtectedRouteProps) => {
+  const {user} = UserAuth();
+  return (user !== null && user.displayName !== undefined) ? children : <Navigate to="/login" />;
 };
 
-interface IRouterProps {
-  user: User;
-  login: (user: User) => void;
-}
 
-export const Router: React.FC<IRouterProps> = ({user, login}: IRouterProps) => {
+export const Router: React.FC = () => {
   return (
     <React.Suspense fallback={'Loading...'}>
       <Routes>
         <Route
           element={
-            <ProtectedRoute user={user} isAuthenticated={checkAuth}>
-              <Dashboard user={user}/>
+            <ProtectedRoute>
+              <Dashboard/>
             </ProtectedRoute>
           }
           path="/"
         />
         <Route
           element={
-            <ProtectedRoute user={user} isAuthenticated={checkAuth}>
-              <Dashboard user={user}/>
+            <ProtectedRoute>
+              <Dashboard/>
             </ProtectedRoute>
           }
           path="/dashboard"
         />
-        <Route element={<Login login={(user: User) => {console.log("User", user.displayName); login(user) }}/>} path="/login" />
+        <Route element={<Login/>} path="/login" />
       </Routes>
     </React.Suspense>
   );

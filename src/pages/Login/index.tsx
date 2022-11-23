@@ -1,32 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BodyContainer, CustomButton } from "../../styles/global";
 import Status from "../../components/Status";
 import { useStatus } from "../../hooks/useStatus";
 import {BsFacebook, BsGoogle} from 'react-icons/bs';
-import {GoogleAuthProvider, signInWithPopup, User} from 'firebase/auth';
-import {auth} from '../../services/firebase';
 import { useNavigate } from 'react-router-dom';
+import {UserAuth} from '../../contexts/AuthContext';
 
-interface ILoginProps {
-  login: (user: User) => void;
-}
-
-const Login: React.FC<ILoginProps> = ({login}:ILoginProps) => {
+const Login: React.FC = () => {
+  const {user, signInWithGoogle} = UserAuth();
   const [inputStatus, setInputStatus] = useStatus(null);
   const navigate = useNavigate();
-  const handleGoogleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result);
-        login(result.user);
-        navigate('/dashboard');
-      })
-      .catch((error) => {
-        console.log(error);
-        setInputStatus({type: "error", fields: "email", message: error.message});
-      });
+  const handleGoogleSignIn = async () => {
+    try{
+      await signInWithGoogle();
+    } catch (error)  {
+      console.log(error);
+      setInputStatus({type: "error", fields: "email", message: (error instanceof Error)?error.message:"Unknown error"});
+    }
   }
+
+  useEffect(() => {
+    if (user != null)
+      navigate('/dashboard');
+  }, [user])
 
   return (
     <BodyContainer>

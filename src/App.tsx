@@ -2,22 +2,23 @@ import React from 'react';
 import { GlobalStyles } from './styles/global';
 import { HashRouter } from 'react-router-dom';
 import { Router } from './routes'
-import {User} from 'firebase/auth';
 import Header from './components/Header';
 import { AppContainer } from "./styles/global";
 import Footer from './components/Footer';
+import {AuthContextProvider} from './contexts/AuthContext';
 
 function App() {
-  const [user, setUser] = React.useState<User>({} as User);
   return (
+    <AuthContextProvider>
     <AppContainer>
       <Header title="Gratify" topPhrase="Grateful" bottomPhrase="Everyday"/>
       <HashRouter>
-        <Router user={user} login={setUser}/>
+        <Router/>
       </HashRouter>
       <Footer footPhrase="by Regis Dantas"></Footer>
       <GlobalStyles />
     </AppContainer>
+    </AuthContextProvider>
   );
 }
 

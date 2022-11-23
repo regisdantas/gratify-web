@@ -6,20 +6,16 @@ import MenuBar from "../../components/MenuBar";
 import Card from "../../components/Card";
 import { useStatus } from "../../hooks/useStatus";
 import uuid from "react-uuid";
-import {User} from 'firebase/auth';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 interface IEntry {
+  user_id: string;
   id: string;
   content: string;
   date: string;
 }
 
-interface IDashboardProps {
-  user: User;
-}
-
-const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
+const Dashboard: React.FC = () => {
   const startDate = new Date().toISOString().split("T")[0];
   const [selectedDate, setSelectedDate] = React.useState<string>(startDate);
   const [entries, setEntries] = React.useState<IEntry[]>([]);
@@ -47,6 +43,7 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
 
   async function handleAddNewEntry(event: React.FormEvent<HTMLButtonElement>) {
     const newEntry: IEntry = {
+      user_id: "1",
       id: uuid(),
       content: "",
       date: selectedDate,
@@ -86,7 +83,7 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
 
   return (
       <BodyContainer>
-      <MenuBar user={user}/>
+      <MenuBar/>
       <Status status={inputStatus} />
       <DateContainer>
       <FiArrowLeft size={30} onClick={() => handleDateIncDec(-1)}/>
@@ -112,7 +109,7 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
           );
         })}
       </EntryList>
-      <CustomButton color="#04D361" onClick={handleAddNewEntry}>Add New</CustomButton>
+      <CustomButton color="orange" onClick={handleAddNewEntry}>Add New</CustomButton>
       </BodyContainer>
   );
 };
