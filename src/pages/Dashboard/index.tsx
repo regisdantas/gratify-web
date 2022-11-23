@@ -1,5 +1,5 @@
 import React from "react";
-import { BodyContainer } from "../../styles/global";
+import { BodyContainer, CustomButton } from "../../styles/global";
 import { DateContainer, EntryList } from "./styles";
 import Status from "../../components/Status";
 import MenuBar from "../../components/MenuBar";
@@ -112,7 +112,7 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
           );
         })}
       </EntryList>
-      <button onClick={handleAddNewEntry}>Add New</button>
+      <CustomButton color="#04D361" onClick={handleAddNewEntry}>Add New</CustomButton>
       </BodyContainer>
   );
 };

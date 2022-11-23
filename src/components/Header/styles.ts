@@ -10,8 +10,9 @@ export const HeaderContainer = styled.header`
     letter-spacing: 7px;
     text-transform: uppercase;
     background: #04D361;
-    padding: 10px;
+    padding: 6px;
     font-weight: bolder;
+    border-radius: -10px;
   }
   h1 {
     font-size: 3em;
@@ -25,13 +26,13 @@ export const HeaderContainer = styled.header`
     justify-content: flex-start;
     flex-direction: row;
     h1 {
-      width: 60%;
+      width: 56%;
     }
   }
 
   .topbar{
     background-color: black !important;
-    height: 20px;
+    height: 16px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
@@ -43,8 +44,9 @@ export const HeaderContainer = styled.header`
   }
 
   img {
-      height: 64px;
+      height: 56px;
       border-radius: 0%;
       margin: 10px;
+      margin-left: 30px;
   }
 `;

@@ -52,7 +52,7 @@ a{
 export const BodyContainer = styled.div`
   width: 100%;
   padding: 6px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 `
 
 export const AppContainer = styled.div`
