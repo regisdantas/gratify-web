@@ -1,13 +1,13 @@
 import React from "react";
 import { BodyContainer } from "../../styles/global";
-import { EntryList } from "./styles";
-import Header from "../../components/Header";
+import { DateContainer, EntryList } from "./styles";
 import Status from "../../components/Status";
 import MenuBar from "../../components/MenuBar";
 import Card from "../../components/Card";
 import { useStatus } from "../../hooks/useStatus";
 import uuid from "react-uuid";
 import {User} from 'firebase/auth';
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 interface IEntry {
   id: string;
@@ -24,6 +24,17 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
   const [selectedDate, setSelectedDate] = React.useState<string>(startDate);
   const [entries, setEntries] = React.useState<IEntry[]>([]);
   const [inputStatus, setInputStatus] = useStatus(null);
+  const dateRef = React.useRef<HTMLInputElement>(null);
+
+  const handleDateIncDec = (days: number) => {
+    const date = new Date(selectedDate);
+    date.setDate(date.getDate() + days);
+    const dateStr = date.toISOString().split("T")[0];
+    setSelectedDate(dateStr);
+    if (dateRef !== null && dateRef.current !== null) {
+      dateRef.current.value = dateStr;
+    }
+  };
 
   const handleDateChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedDate(event.target.value);
@@ -77,11 +88,16 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
       <BodyContainer>
       <MenuBar user={user}/>
       <Status status={inputStatus} />
+      <DateContainer>
+      <FiArrowLeft size={30} onClick={() => handleDateIncDec(-1)}/>
         <input
+          ref={dateRef}
           type="date"
           defaultValue={startDate}
           onChange={handleDateChanged}
         ></input>
+      <FiArrowRight size={30} onClick={() => handleDateIncDec(1)}/>
+      </DateContainer>
       <EntryList>
         {entries.map((entry) => {
           return entry.date === selectedDate ? (
