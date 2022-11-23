@@ -36,7 +36,7 @@ body, input, textarea, select, button {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 2.5rem 1.25rem;
+  padding: 2px;
 }
 
 button {
@@ -57,10 +57,12 @@ export const BodyContainer = styled.div`
 export const AppContainer = styled.div`
   max-width: 400px;
   width: 400px;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 1px solid red;
 
   input, button {
     display: flex;
@@ -93,6 +95,12 @@ interface CustomButtonProps {
 }
 
 export const CustomButton = styled.button<CustomButtonProps>`
+  display: block !important;
+  svg {
+    float: left;
+    margin-left: 10px;
+  }
+
   ${props =>
     props.color &&
     css`
