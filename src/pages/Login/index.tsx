@@ -6,7 +6,7 @@ import { useStatus } from "../../hooks/useStatus";
 import { FcGoogle } from 'react-icons/fc';
 import {GoogleAuthProvider, signInWithPopup, User} from 'firebase/auth';
 import {auth} from '../../services/firebase';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface ILoginProps {
   login: (user: User) => void;
@@ -30,13 +30,11 @@ const Login: React.FC<ILoginProps> = ({login}:ILoginProps) => {
   }
 
   return (
-    <>
+    <AppContainer>
       <Header title="Gratify"/>
       <Status status={inputStatus} />
-      <AppContainer>
-        <button onClick={handleGoogleSignIn}><FcGoogle/>Sign in using Google Account</button>
-      </AppContainer>
-    </>
+      <button onClick={handleGoogleSignIn}><FcGoogle/>Sign in using Google Account</button>
+    </AppContainer>
   );
 };
 

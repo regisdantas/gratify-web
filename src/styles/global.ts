@@ -33,8 +33,9 @@ body, input, textarea, select, button {
 }
 
 #root {
-  max-width: 960px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   padding: 2.5rem 1.25rem;
 }
 
@@ -50,12 +51,12 @@ a{
 
 export const AppContainer = styled.div`
   max-width: 400px;
-  width: 100%;
-  margin-top: 40px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   input, button {
     display: flex;
     align-items: center;

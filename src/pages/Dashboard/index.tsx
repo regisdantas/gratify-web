@@ -74,17 +74,15 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
   }
 
   return (
-    <>
+      <AppContainer>
       <Header title="Gratify" />
       <MenuBar user={user}/>
       <Status status={inputStatus} />
-      <AppContainer>
         <input
           type="date"
           defaultValue={startDate}
           onChange={handleDateChanged}
         ></input>
-
       <EntryList>
         {entries.map((entry) => {
           return entry.date === selectedDate ? (
@@ -101,7 +99,6 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
       </EntryList>
       <button onClick={handleAddNewEntry}>Add New</button>
       </AppContainer>
-    </>
   );
 };
 
