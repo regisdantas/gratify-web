@@ -47,6 +47,7 @@ export const CardContainer = styled.div`
       }
     }
     strong {
+      color: darkgray;
       width: 100%;
       padding: 10px;
     }
@@ -63,7 +64,6 @@ export const CardContainer = styled.div`
 
     span:empty::before {
       content: attr(data-placeholder);
-      display: inline-block;
       color: lightgray;
     }
 

@@ -20,7 +20,7 @@ const Card: React.FC<ICardProps> = ({
     <CardContainer>
       <div className="ContentContainer">
         <header>
-          <strong>{id}</strong>
+          <strong>id: {id}</strong>
             <FiTrash2 onClick={e => onDeleteCard(id)}></FiTrash2>
         </header>
         <span

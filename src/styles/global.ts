@@ -52,6 +52,7 @@ a{
 export const BodyContainer = styled.div`
   width: 100%;
   margin-top: 30px;
+  margin-bottom: 30px;
 `
 
 export const AppContainer = styled.div`
@@ -78,6 +79,7 @@ export const AppContainer = styled.div`
   button {
     margin-top: 20px;
     background: #04d361;
+    justify-content: center;
     border: 0;
     color: #fff;
     font-weight: bold;
