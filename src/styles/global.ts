@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { css, createGlobalStyle } from 'styled-components';
 import { shade } from 'polished';
 
 export const GlobalStyles = createGlobalStyle`
@@ -51,7 +51,6 @@ a{
 
 export const BodyContainer = styled.div`
   width: 100%;
-  margin-top: 30px;
   margin-bottom: 30px;
 `
 
@@ -69,7 +68,6 @@ export const AppContainer = styled.div`
     width: 100%;
     border-radius: 5px;
     padding: 10px;
-    margin: 5px;
     height: 50px;
     svg {
       font-size: 24px;
@@ -88,6 +86,22 @@ export const AppContainer = styled.div`
       background-color: ${shade(0.2, '#04d361')};
     }
   }
+`;
+
+interface CustomButtonProps {
+  color: string;
+}
+
+export const CustomButton = styled.button<CustomButtonProps>`
+  ${props =>
+    props.color &&
+    css`
+      background-color: ${props.color} !important;
+      &:hover {
+        background-color: ${shade(0.2, props.color)} !important;
+      }
+    `}
+
 `;
 
 export const EntryList = styled.div`

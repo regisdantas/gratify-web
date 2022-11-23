@@ -14,4 +14,5 @@ export const DateContainer = styled.div`
 
 export const EntryList = styled.div`
   max-width: 400px;
+  margin-top: 20px;
 `;
