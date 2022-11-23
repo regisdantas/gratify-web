@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/gratify-web/static/js/main.341491ba.js",
+    "main.js": "/gratify-web/static/js/main.bbea1fff.js",
     "login.js": "/gratify-web/static/js/login.b142c3b1.chunk.js",
-    "dashboard.js": "/gratify-web/static/js/dashboard.45d1fc4b.chunk.js",
+    "dashboard.js": "/gratify-web/static/js/dashboard.82873075.chunk.js",
     "static/js/823.50ee7d53.chunk.js": "/gratify-web/static/js/823.50ee7d53.chunk.js",
     "static/js/436.2623af67.chunk.js": "/gratify-web/static/js/436.2623af67.chunk.js",
     "static/js/734.379b868c.chunk.js": "/gratify-web/static/js/734.379b868c.chunk.js",
     "static/media/logo.png": "/gratify-web/static/media/logo.1164200b72d8c1daf071.png",
     "static/media/user.png": "/gratify-web/static/media/user.ae3a914be1e9f200b221.png",
     "index.html": "/gratify-web/index.html",
-    "main.341491ba.js.map": "/gratify-web/static/js/main.341491ba.js.map",
+    "main.bbea1fff.js.map": "/gratify-web/static/js/main.bbea1fff.js.map",
     "login.b142c3b1.chunk.js.map": "/gratify-web/static/js/login.b142c3b1.chunk.js.map",
-    "dashboard.45d1fc4b.chunk.js.map": "/gratify-web/static/js/dashboard.45d1fc4b.chunk.js.map",
+    "dashboard.82873075.chunk.js.map": "/gratify-web/static/js/dashboard.82873075.chunk.js.map",
     "823.50ee7d53.chunk.js.map": "/gratify-web/static/js/823.50ee7d53.chunk.js.map",
     "436.2623af67.chunk.js.map": "/gratify-web/static/js/436.2623af67.chunk.js.map",
     "734.379b868c.chunk.js.map": "/gratify-web/static/js/734.379b868c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.341491ba.js"
+    "static/js/main.bbea1fff.js"
   ]
 }
