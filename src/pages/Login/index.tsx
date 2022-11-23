@@ -1,8 +1,9 @@
 import React from "react";
-import { BodyContainer } from "../../styles/global";
+import { BodyContainer, CustomButton } from "../../styles/global";
 import Status from "../../components/Status";
 import { useStatus } from "../../hooks/useStatus";
 import { FcGoogle } from 'react-icons/fc';
+import {BsFacebook} from 'react-icons/bs';
 import {GoogleAuthProvider, signInWithPopup, User} from 'firebase/auth';
 import {auth} from '../../services/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +32,8 @@ const Login: React.FC<ILoginProps> = ({login}:ILoginProps) => {
   return (
     <BodyContainer>
       <Status status={inputStatus} />
-      <button onClick={handleGoogleSignIn}><FcGoogle/>Sign in using Google Account</button>
+      <CustomButton color={"orange"} onClick={handleGoogleSignIn}><FcGoogle/>Sign in using Google Account</CustomButton>
+      <CustomButton color={"blue"} onClick={handleGoogleSignIn}><BsFacebook size={20}/>Sign in using Facebook Account</CustomButton>
     </BodyContainer>
   );
 };
