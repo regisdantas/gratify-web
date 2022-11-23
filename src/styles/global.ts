@@ -49,6 +49,11 @@ a{
 }
 `;
 
+export const BodyContainer = styled.div`
+  width: 100%;
+  margin-top: 30px;
+`
+
 export const AppContainer = styled.div`
   max-width: 400px;
   width: 400px;
