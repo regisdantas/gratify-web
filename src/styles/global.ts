@@ -36,7 +36,7 @@ body, input, textarea, select, button {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 2px;
+  padding: 10px;
 }
 
 button {
@@ -51,18 +51,17 @@ a{
 
 export const BodyContainer = styled.div`
   width: 100%;
+  padding: 6px;
   margin-bottom: 30px;
 `
 
 export const AppContainer = styled.div`
   max-width: 400px;
   width: 400px;
-  min-height: 80vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start !important;
   justify-content: center;
-  border: 1px solid red;
 
   input, button {
     display: flex;
