@@ -1,6 +1,5 @@
 import React from "react";
-import { AppContainer } from "../../styles/global";
-import Header from "../../components/Header";
+import { BodyContainer } from "../../styles/global";
 import Status from "../../components/Status";
 import { useStatus } from "../../hooks/useStatus";
 import { FcGoogle } from 'react-icons/fc';
@@ -30,11 +29,10 @@ const Login: React.FC<ILoginProps> = ({login}:ILoginProps) => {
   }
 
   return (
-    <AppContainer>
-      <Header title="Gratify"/>
+    <BodyContainer>
       <Status status={inputStatus} />
       <button onClick={handleGoogleSignIn}><FcGoogle/>Sign in using Google Account</button>
-    </AppContainer>
+    </BodyContainer>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { AppContainer } from "../../styles/global";
+import { BodyContainer } from "../../styles/global";
 import { EntryList } from "./styles";
 import Header from "../../components/Header";
 import Status from "../../components/Status";
@@ -74,8 +74,7 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
   }
 
   return (
-      <AppContainer>
-      <Header title="Gratify" />
+      <BodyContainer>
       <MenuBar user={user}/>
       <Status status={inputStatus} />
         <input
@@ -98,7 +97,7 @@ const Dashboard: React.FC<IDashboardProps> = ({user}:IDashboardProps) => {
         })}
       </EntryList>
       <button onClick={handleAddNewEntry}>Add New</button>
-      </AppContainer>
+      </BodyContainer>
   );
 };
 

@@ -13,7 +13,6 @@ const Header: React.FC<IHeaderProps> = ({ title }: IHeaderProps) => {
         <img src={logo} />
         <h1>{title}</h1>
       </div>
-      <p>by Regis Dantas</p>
     </HeaderContainer>
   );
 };
