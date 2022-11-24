@@ -20,9 +20,10 @@ const Login: React.FC = () => {
   }
 
   useEffect(() => {
-    if (user != null)
+    if (user !== null && user.displayName !== undefined) {
       navigate('/dashboard');
-  }, [user])
+    }
+  }, [user]);
 
   return (
     <BodyContainer>

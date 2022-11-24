@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import {User} from 'firebase/auth';
 import {UserAuth} from '../contexts/AuthContext';
 
 const Login = React.lazy(

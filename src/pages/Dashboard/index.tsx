@@ -7,9 +7,11 @@ import Card from "../../components/Card";
 import { useStatus } from "../../hooks/useStatus";
 import uuid from "react-uuid";
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-
+import { database} from "../../services/firebase";
+import {collection, query, where, getDocs, doc, addDoc, setDoc, deleteDoc} from 'firebase/firestore';
+import { UserAuth } from '../../contexts/AuthContext';
 interface IEntry {
-  user_id: string;
+  uid: string;
   id: string;
   content: string;
   date: string;
@@ -21,6 +23,7 @@ const Dashboard: React.FC = () => {
   const [entries, setEntries] = React.useState<IEntry[]>([]);
   const [inputStatus, setInputStatus] = useStatus(null);
   const dateRef = React.useRef<HTMLInputElement>(null);
+  const {user} = UserAuth();
 
   const handleDateIncDec = (days: number) => {
     const date = new Date(selectedDate);
@@ -36,49 +39,61 @@ const Dashboard: React.FC = () => {
     setSelectedDate(event.target.value);
   };
 
-  const saveEntries = (newEntries: IEntry[]) => {
-    localStorage.setItem("gratify_entries", JSON.stringify(newEntries));
-    setEntries(newEntries);
-  }
-
   async function handleAddNewEntry(event: React.FormEvent<HTMLButtonElement>) {
     const newEntry: IEntry = {
-      user_id: "1",
+      uid: user.uid,
       id: uuid(),
       content: "",
       date: selectedDate,
     };
     const newEntries = [...entries, newEntry];
-    saveEntries(newEntries);
+    setEntries(newEntries);
+    await addDoc(collection(database, "entries"), newEntry);
+  }
+
+  async function fetchEntries() {
+    console.log(user.uid);
+    const userQuery = query(collection(database, "entries"), where("uid", "==", user.uid));
+    const querySnapshot = await getDocs(userQuery);
+    const entries: IEntry[] = [];
+    querySnapshot.forEach((doc) => {
+      entries.push(doc.data() as IEntry);
+    });
+    setEntries(entries);
   }
 
   React.useEffect(() => {
-    const entriesStr = localStorage.getItem("gratify_entries");
-    try {
-      if (entriesStr) {
-        const storedEntries = JSON.parse(entriesStr);
-        if (storedEntries && Array.isArray(storedEntries)) {
-          setEntries(storedEntries);
-        }
-      }
-    } catch (e) {
-      console.log(e);
-    }
+    fetchEntries();
   }, []);
 
-  const handleDeleteEntry = (id: string) => {
+  const handleDeleteEntry = async (id: string) => {
     const newEntries = entries.filter(entry => entry.id !== id);
-    saveEntries(newEntries);
+    setEntries(newEntries);
+    const userQuery = query(collection(database, "entries"), where("id", "==", id));
+    const querySnapshot = await getDocs(userQuery);
+    querySnapshot.forEach((document) => {
+      deleteDoc(doc(database, "entries", document.id));
+    });
   }
 
-  const handleChangeEntry = (id: string, content: string) => {
+  const handleChangeEntry = async (id: string, content: string) => {
     const newEntries = entries.map((entry) => {
       if (entry.id === id) {
         entry.content = content;
       }
       return entry;
     });
-    saveEntries(newEntries);
+    setEntries(newEntries);
+
+    const changedEntry = entries.find(entry => entry.id === id);
+    if (changedEntry) {
+      changedEntry.content = content;
+      const userQuery = query(collection(database, "entries"), where("id", "==", id));
+      const querySnapshot = await getDocs(userQuery);
+      querySnapshot.forEach((document) => {
+        setDoc(doc(database, "entries", document.id), changedEntry);
+      });
+    }
   }
 
   return (
@@ -99,13 +114,14 @@ const Dashboard: React.FC = () => {
         {entries.map((entry) => {
           return entry.date === selectedDate ? (
             <Card
+              key={entry.id}
               id={entry.id}
               content={entry.content}
               onDeleteCard={handleDeleteEntry}
               onChangeContent={handleChangeEntry}
             />
           ) : (
-            <></>
+            <div key={entry.id} ></div>
           );
         })}
       </EntryList>
