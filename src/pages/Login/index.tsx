@@ -3,6 +3,7 @@ import { BodyContainer, CustomButton } from "../../styles/global";
 import Status from "../../components/Status";
 import { useStatus } from "../../hooks/useStatus";
 import {BsFacebook, BsGoogle} from 'react-icons/bs';
+import {MdEmail} from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import {UserAuth} from '../../contexts/AuthContext';
 
@@ -28,6 +29,13 @@ const Login: React.FC = () => {
   return (
     <BodyContainer>
       <Status status={inputStatus} />
+      <form action="submit">
+        <input type="text" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <CustomButton color={"#04d361"}>
+          <MdEmail /> Sign in with Email
+        </CustomButton>
+      </form>
       <CustomButton color={"#DB4437"} onClick={handleGoogleSignIn}>
         <BsGoogle size={20}/> Sign in using Google Account
       </CustomButton>

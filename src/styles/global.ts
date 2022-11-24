@@ -67,6 +67,7 @@ export const AppContainer = styled.div`
   justify-content: center;
 
   input, button {
+    margin-top: 20px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -79,7 +80,6 @@ export const AppContainer = styled.div`
     }
   }
   button {
-    margin-top: 20px;
     background: #04d361;
     justify-content: center;
     border: 0;
