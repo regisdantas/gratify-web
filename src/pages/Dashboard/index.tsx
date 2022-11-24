@@ -48,13 +48,15 @@ const Dashboard: React.FC = () => {
     };
     const newEntries = [...entries, newEntry];
     setEntries(newEntries);
-    await addDoc(collection(database, "entries"), newEntry);
+    const userDocRef = doc(database, "users", user.uid);
+    const entriesRef = collection(userDocRef, "entries");
+    await addDoc(entriesRef, newEntry);
   }
 
   async function fetchEntries() {
-    console.log(user.uid);
-    const userQuery = query(collection(database, "entries"), where("uid", "==", user.uid));
-    const querySnapshot = await getDocs(userQuery);
+    const userDocRef = doc(database, "users", user.uid);
+    const entriesRef = collection(userDocRef, "entries");
+    const querySnapshot = await getDocs(entriesRef);
     const entries: IEntry[] = [];
     querySnapshot.forEach((doc) => {
       entries.push(doc.data() as IEntry);
@@ -69,10 +71,13 @@ const Dashboard: React.FC = () => {
   const handleDeleteEntry = async (id: string) => {
     const newEntries = entries.filter(entry => entry.id !== id);
     setEntries(newEntries);
-    const userQuery = query(collection(database, "entries"), where("id", "==", id));
+
+    const userDocRef = doc(database, "users", user.uid);
+    const entriesRef = collection(userDocRef, "entries");
+    const userQuery = query(entriesRef, where("id", "==", id));
     const querySnapshot = await getDocs(userQuery);
     querySnapshot.forEach((document) => {
-      deleteDoc(doc(database, "entries", document.id));
+      deleteDoc(doc(database, `users/${user.uid}/entries`, document.id));
     });
   }
 
@@ -88,10 +93,12 @@ const Dashboard: React.FC = () => {
     const changedEntry = entries.find(entry => entry.id === id);
     if (changedEntry) {
       changedEntry.content = content;
-      const userQuery = query(collection(database, "entries"), where("id", "==", id));
+      const userDocRef = doc(database, "users", user.uid);
+      const entriesRef = collection(userDocRef, "entries");
+      const userQuery = query(entriesRef, where("id", "==", id));
       const querySnapshot = await getDocs(userQuery);
       querySnapshot.forEach((document) => {
-        setDoc(doc(database, "entries", document.id), changedEntry);
+        setDoc(doc(database, `users/${user.uid}/entries`, document.id), changedEntry);
       });
     }
   }
