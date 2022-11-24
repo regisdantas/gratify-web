@@ -6,7 +6,7 @@ export const Title = styled.h1`
 `;
 
 export const CardContainer = styled.div`
-  max-width: 400px;
+  /* max-width: 400px; */
   width: 100%;
 
   display: flex;
@@ -57,9 +57,6 @@ export const CardContainer = styled.div`
       padding: 10px;
       width: 100%;
       text-align: justify;
-
-      max-height: 200px;
-      overflow: hidden;
     }
 
     span:empty::before {

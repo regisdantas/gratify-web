@@ -59,15 +59,16 @@ export const BodyContainer = styled.div`
 
 export const AppContainer = styled.div`
   min-height: 90vh;
-  max-width: 400px;
-  width: 400px;
+  max-width: 600px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   align-items: flex-start !important;
   justify-content: center;
 
   input, button {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -115,5 +116,5 @@ export const CustomButton = styled.button<CustomButtonProps>`
 `;
 
 export const EntryList = styled.div`
-  max-width: 400px;
+
 `;
