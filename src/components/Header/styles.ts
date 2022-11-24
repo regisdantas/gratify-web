@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+
 export const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   width: 100%;
   text-align:center;
+  background: #f0f0f5;
   p {
     font-size: 12px;
     letter-spacing: 7px;

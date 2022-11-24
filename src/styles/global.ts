@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 html {
+  overflow: scroll;
   @media (max-width: 1080px) {
     font-size: 93.75%;
   }
@@ -51,11 +52,13 @@ a{
 
 export const BodyContainer = styled.div`
   width: 100%;
+  height: 100%;
   padding: 6px;
   margin-bottom: 10px;
 `
 
 export const AppContainer = styled.div`
+  min-height: 90vh;
   max-width: 400px;
   width: 400px;
   display: flex;

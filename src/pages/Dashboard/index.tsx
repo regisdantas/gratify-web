@@ -132,7 +132,7 @@ const Dashboard: React.FC = () => {
           );
         })}
       </EntryList>
-      <CustomButton color="orange" onClick={handleAddNewEntry}>Add New</CustomButton>
+      <CustomButton color="#04d361" onClick={handleAddNewEntry}>Add New</CustomButton>
       </BodyContainer>
   );
 };

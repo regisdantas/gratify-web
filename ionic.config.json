@@ -1,0 +1,7 @@
+{
+  "name": "gratify",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
