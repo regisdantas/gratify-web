@@ -17,7 +17,7 @@ const Card: React.FC<ICardProps> = ({
 }: ICardProps) => {
   const textRef = React.useRef<HTMLSpanElement>(null);
   return (
-    <CardContainer>
+    <CardContainer key={id} >
       <div className="ContentContainer">
         <header>
           <strong>id: {id}</strong>
