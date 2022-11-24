@@ -1,5 +1,6 @@
 import {useContext, createContext, useEffect, useState} from 'react';
 import {GoogleAuthProvider,
+        FacebookAuthProvider,
         signInWithPopup,
         signOut,
         onAuthStateChanged,
@@ -9,6 +10,7 @@ import {auth} from '../services/firebase';
 interface IAuthContext {
   user: User;
   signInWithGoogle: () => Promise<void>;
+  signInWithFacebook: () => Promise<void>;
   logOut: () => Promise<void>;
 
 }
@@ -26,6 +28,11 @@ export const AuthContextProvider = ({children}: IAuthProps) => {
     signInWithPopup(auth, provider);
   }
 
+  const signInWithFacebook = async () => {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider).then(res => console.log(res)).catch(err => console.log(err))
+  }
+
   const logOut = () => {
     signOut(auth);
   }
@@ -38,7 +45,7 @@ export const AuthContextProvider = ({children}: IAuthProps) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{user, signInWithGoogle, logOut} as IAuthContext}>
+    <AuthContext.Provider value={{user, signInWithGoogle, signInWithFacebook, logOut} as IAuthContext}>
       {children}
     </AuthContext.Provider>
   );

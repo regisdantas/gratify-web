@@ -17,6 +17,7 @@ export const HeaderContainer = styled.header`
     border-radius: -10px;
   }
   h1 {
+    font-family: cursive;
     font-size: 3em;
     font-weight: bolder;
     text-transform: lowercase;
@@ -24,11 +25,11 @@ export const HeaderContainer = styled.header`
   div {
     display: flex;
     width: 100%;
-    align-items: center;
+    align-items: top;
     justify-content: flex-start;
     flex-direction: row;
     h1 {
-      width: 56%;
+      width: 70%;
     }
   }
 

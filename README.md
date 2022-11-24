@@ -44,7 +44,6 @@ A WEB gratitude journaling application with user data stored in firebase databas
 - [ ] - Add CI/CD
 - [ ] - Add i18n
 - [ ] - Add dark mode
-- [ ] - Add Google AddSense
 
 ### Known Issues
 
