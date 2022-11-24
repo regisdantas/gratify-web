@@ -36,10 +36,10 @@ A WEB gratitude journaling application with user data stored in firebase databas
 
 ### ToDo
 
-- [ ] - Add user database
-- [ ] - Add logout
+- [x] - Add entries database
+- [x] - Add logout
 - [ ] - Add facebook authentication
-- [ ] - Add save/get notes into/from firebase database
+- [x] - Add save/get notes into/from firebase database
 - [ ] - Add tests
 - [ ] - Add CI/CD
 - [ ] - Add i18n
