@@ -9,12 +9,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 html {
-  overflow: scroll;
-  @media (max-width: 1080px) {
-    font-size: 93.75%;
-  }
-
-  @media (max-width: 720px) {
+  @media (max-width: 320px) {
     font-size: 87.5%;
   }
 }
@@ -63,10 +58,13 @@ export const AppContainer = styled.div`
   width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start !important;
   justify-content: center;
 
   input, button {
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 400px;
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
