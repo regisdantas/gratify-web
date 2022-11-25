@@ -8,12 +8,6 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
-html {
-  @media (max-width: 320px) {
-    font-size: 87.5%;
-  }
-}
-
 body {
   align-self: center;
   background: #f0f0f5;
