@@ -18,7 +18,7 @@ export const HeaderContainer = styled.header`
   }
   h1 {
     font-family: Holiday;
-    font-size: 4em;
+    font-size: 60px;
     font-weight: bolder;
     text-transform: lowercase;
   }

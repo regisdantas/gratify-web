@@ -103,6 +103,7 @@ const Dashboard: React.FC = () => {
     }
   }
 
+  let count = 0;
   return (
       <BodyContainer>
       <MenuBar/>
@@ -118,11 +119,11 @@ const Dashboard: React.FC = () => {
       <FiArrowRight size={30} onClick={() => handleDateIncDec(1)}/>
       </DateContainer>
       <EntryList>
-        {entries.map((entry) => {
+        {entries.map((entry, index) => {
           return entry.date === selectedDate ? (
             <Card
               key={entry.id}
-              id={entry.id}
+              id={`${count=count+1}`}
               content={entry.content}
               onDeleteCard={handleDeleteEntry}
               onChangeContent={handleChangeEntry}
