@@ -17,8 +17,8 @@ export const HeaderContainer = styled.header`
     border-radius: -10px;
   }
   h1 {
-    font-family: cursive;
-    font-size: 3em;
+    font-family: Holiday;
+    font-size: 4em;
     font-weight: bolder;
     text-transform: lowercase;
   }
