@@ -123,7 +123,8 @@ const Dashboard: React.FC = () => {
           return entry.date === selectedDate ? (
             <Card
               key={entry.id}
-              id={`${count=count+1}`}
+              id={entry.id}
+              number={count=count+1}
               content={entry.content}
               onDeleteCard={handleDeleteEntry}
               onChangeContent={handleChangeEntry}
