@@ -4,6 +4,7 @@ import { FiTrash2 } from 'react-icons/fi';
 
 interface ICardProps {
   id: string;
+  number: number;
   content: string;
   onDeleteCard: any;
   onChangeContent: any;
@@ -11,6 +12,7 @@ interface ICardProps {
 
 const Card: React.FC<ICardProps> = ({
   id,
+  number,
   content,
   onDeleteCard,
   onChangeContent
@@ -20,7 +22,7 @@ const Card: React.FC<ICardProps> = ({
     <CardContainer key={id} >
       <div className="ContentContainer">
         <header>
-          <strong>#{id} - Grateful for:</strong>
+          <strong>#{number} - Grateful for:</strong>
           <FiTrash2 onClick={e => onDeleteCard(id)}></FiTrash2>
         </header>
         <span
