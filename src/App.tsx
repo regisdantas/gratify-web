@@ -1,4 +1,3 @@
-import React from 'react';
 import { GlobalStyles } from './styles/global';
 import { HashRouter } from 'react-router-dom';
 import { Router } from './routes'
@@ -11,7 +10,7 @@ function App() {
   return (
     <AuthContextProvider>
     <AppContainer>
-      <Header title="Gratify" topPhrase="Grateful" bottomPhrase="Everyday"/>
+      <Header title="Journaling" topPhrase="Recording" bottomPhrase="Everyday"/>
       <HashRouter>
         <Router/>
       </HashRouter>

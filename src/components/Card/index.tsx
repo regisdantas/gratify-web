@@ -22,14 +22,14 @@ const Card: React.FC<ICardProps> = ({
     <CardContainer key={id} >
       <div className="ContentContainer">
         <header>
-          <strong>#{number} - Grateful for:</strong>
+          <strong>Record #{number}:</strong>
           <FiTrash2 onClick={e => onDeleteCard(id)}></FiTrash2>
         </header>
         <span
           ref={textRef}
           role="textbox"
           contentEditable
-          data-placeholder='What are you grateful for this day?'
+          data-placeholder='What record do you have for today?'
           onBlur={e => onChangeContent(id, e.currentTarget.innerText)}
           suppressContentEditableWarning={true}
         >
