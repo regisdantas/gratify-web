@@ -10,6 +10,8 @@ import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { database} from "../../services/firebase";
 import {collection, query, where, getDocs, doc, addDoc, setDoc, deleteDoc} from 'firebase/firestore';
 import { UserAuth } from '../../contexts/AuthContext';
+import { isJsonString } from '../../utils';
+
 interface IEntry {
   uid: string;
   id: string;
@@ -120,7 +122,8 @@ const Dashboard: React.FC = () => {
       </DateContainer>
       <EntryList>
         {entries.map((entry, index) => {
-          return entry.date === selectedDate ? (
+          console.log(entry)
+          return (entry.date === selectedDate || (isJsonString(entry.content) && JSON.parse(entry.content).fixed === true)) ? (
             <Card
               key={entry.id}
               id={entry.id}

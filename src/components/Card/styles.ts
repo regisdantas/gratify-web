@@ -46,10 +46,22 @@ export const CardContainer = styled.div`
         cursor: pointer;
       }
     }
+
+
+
     strong {
       color: darkgray;
       width: 100%;
       padding: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      input,select {
+        width: fit-content;
+        margin: 0px;
+        height: 30px;
+        color: black;
+      }
     }
 
     span {
