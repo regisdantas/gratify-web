@@ -25,6 +25,7 @@ const Dashboard: React.FC = () => {
   const [entries, setEntries] = React.useState<IEntry[]>([]);
   const [inputStatus, setInputStatus] = useStatus(null);
   const dateRef = React.useRef<HTMLInputElement>(null);
+  const [showAll, setShowAll] = React.useState<boolean>(false);
   const {user} = UserAuth();
 
   const handleDateIncDec = (days: number) => {
@@ -111,6 +112,7 @@ const Dashboard: React.FC = () => {
       <MenuBar/>
       <Status status={inputStatus} />
       <DateContainer>
+      <input type={'checkbox'} onChange={(e) => setShowAll(e.target.checked)}></input>
       <FiArrowLeft size={30} onClick={() => handleDateIncDec(-1)}/>
         <input
           ref={dateRef}
@@ -123,7 +125,7 @@ const Dashboard: React.FC = () => {
       <EntryList>
         {entries.map((entry, index) => {
           console.log(entry)
-          return (entry.date === selectedDate || (isJsonString(entry.content) && JSON.parse(entry.content).fixed === true)) ? (
+          return (showAll || entry.date === selectedDate || (isJsonString(entry.content) && JSON.parse(entry.content).fixed === true)) ? (
             <Card
               key={entry.id}
               id={entry.id}
