@@ -51,6 +51,7 @@ export const BodyContainer = styled.div`
 export const AppContainer = styled.div`
   min-height: 90vh;
   max-width: 900px;
+  padding-bottom: 30px;
   width: 900px;
   display: flex;
   flex-direction: column;

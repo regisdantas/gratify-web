@@ -2,9 +2,10 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  position:relative;
+  position: fixed;
   bottom:0;
   width: 100%;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
