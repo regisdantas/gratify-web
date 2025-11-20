@@ -47,21 +47,27 @@ export const CardContainer = styled.div`
       }
     }
 
-
+    span {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      gap: 5px;
+      align-items: center;
+    }
+    input, select {
+      width: fit-content;
+      margin: 0px;
+      height: 30px;
+      color: black;
+      border: none;
+    }
 
     strong {
       color: darkgray;
       width: 100%;
-      padding: 10px;
       display: flex;
       gap: 10px;
       align-items: center;
-      input,select {
-        width: fit-content;
-        margin: 0px;
-        height: 30px;
-        color: black;
-      }
     }
 
     span {

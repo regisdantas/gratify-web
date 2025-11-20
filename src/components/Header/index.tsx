@@ -43,7 +43,11 @@ const Header: React.FC<IHeaderProps> = ({ title, topPhrase }: IHeaderProps) => {
     <HeaderContainer>
         <p className='topbar'>{topPhrase}</p>
         <div className='titlebar'>
-          <h1><img src={logo} /> {title}</h1>
+          <span className='logo-title'>
+              <img src={logo} />  
+            <h1>{title}</h1>
+          </span>
+          
             {(
               user !== null &&
               user.displayName !== undefined &&

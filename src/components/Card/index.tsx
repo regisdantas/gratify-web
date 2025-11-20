@@ -2,6 +2,7 @@ import React from 'react';
 import { CardContainer } from './styles';
 import { FiTrash2 } from 'react-icons/fi';
 import { isJsonString } from '../../utils';
+import { TbPinned, TbPinnedOff } from "react-icons/tb";
 interface ICardProps {
   id: string;
   number: number;
@@ -32,15 +33,19 @@ const Card: React.FC<ICardProps> = ({
       <div className="ContentContainer">
         <header>
           <strong>
-          <input type={'checkbox'} checked={objContent.fixed} onChange={e => onChangeContent(id, JSON.stringify({...objContent, fixed: e.target.checked}))} />
-          {number}#
+            {(objContent.fixed)?<TbPinnedOff size={24} />:<TbPinned size={24} />}
+            {/* <input type={'checkbox'} checked={objContent.fixed} onChange={e => onChangeContent(id, JSON.stringify({...objContent, fixed: e.target.checked}))} /> */}
             <select value={objContent.type} onChange={e => onChangeContent(id, JSON.stringify({...objContent, type: e.target.value}))}>
               <option value="note">Note</option>
               <option value="gratitude">Gratitude</option>
-              <option value="record">Record</option>
+              <option value="journal">Journal</option>
             </select>
+            <strong>
+              {number}# {id}
             </strong>
-          <FiTrash2 onClick={e => onDeleteCard(id)}></FiTrash2>
+            </strong>
+
+          <FiTrash2  onClick={e => onDeleteCard(id)}></FiTrash2>
         </header>
         <span
           ref={textRef}

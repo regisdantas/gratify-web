@@ -27,8 +27,19 @@ export const HeaderContainer = styled.header`
     padding: 6px;
   }
 
-  .titlebar h1 {
+  .titlebar .logo-title {
     width: 100px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      margin: 0;
+    }
+  }
+  
+  .titlebar h1{
     font-family: Holiday;
     font-size: 36px;
     font-weight: bolder;
@@ -39,6 +50,13 @@ export const HeaderContainer = styled.header`
     justify-content: flex-start;
     align-items: center;
   }
+
+  @media (max-width: 600px) {
+    .titlebar h1 {
+      display: none;
+    }
+  }
+
   .titlebar {
     display: flex;
     width: 100%;
@@ -93,8 +111,8 @@ export const DateContainer = styled.div`
     width: 20px;
   }
   input {
-    background: #e0e0e5;
-    height: 35px;
+    background: transparent;
+    height: auto;
     border: none;
   }
 `;
