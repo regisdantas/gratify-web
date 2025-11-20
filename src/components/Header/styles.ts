@@ -10,6 +10,8 @@ export const HeaderContainer = styled.header`
   width: 100%;
   text-align:center;
   background: #f0f0f5;
+  margin: 0;
+  padding: 0;
   .topbar{
     font-size: 12px;
     letter-spacing: 7px;
@@ -40,7 +42,7 @@ export const HeaderContainer = styled.header`
   .titlebar {
     display: flex;
     width: 100%;
-    height: 70px;
+    height: 56px;
     background: #04D361;
     align-items: center;
     justify-content: space-between;
@@ -79,6 +81,12 @@ export const DateContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  align-self: flex-end;
+  margin: 0px;
+  height: 35px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: #e0e0e5;
   svg {
     cursor: pointer;
     margin: 0 10px 0 10px;
@@ -86,5 +94,7 @@ export const DateContainer = styled.div`
   }
   input {
     background: #e0e0e5;
+    height: 35px;
+    border: none;
   }
 `;
