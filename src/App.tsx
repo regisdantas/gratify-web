@@ -10,7 +10,7 @@ function App() {
   return (
     <AuthContextProvider>
     <AppContainer>
-      <Header title="Journaling" topPhrase="Recording" bottomPhrase="Everyday"/>
+      <Header title="Gratify" topPhrase="Journaling Everyday"/>
       <HashRouter>
         <Router/>
       </HashRouter>

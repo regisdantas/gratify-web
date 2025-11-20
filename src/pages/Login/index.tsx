@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { BodyContainer, CustomButton } from "../../styles/global";
-import Status from "../../components/Status";
+import { BodyContainer, CustomButton, DataContainer } from "../../styles/global";
 import { useStatus } from "../../hooks/useStatus";
 import {BsFacebook, BsGoogle} from 'react-icons/bs';
 import {MdEmail} from 'react-icons/md';
@@ -37,7 +36,7 @@ const Login: React.FC = () => {
 
   return (
     <BodyContainer>
-      <Status status={inputStatus} />
+      <DataContainer>
       <form action="submit">
         <input type="text" placeholder="Email" />
         <input type="password" placeholder="Password" />
@@ -51,6 +50,7 @@ const Login: React.FC = () => {
       <CustomButton color={"#3b5998"} onClick={handleFacebookSignIn}>
         <BsFacebook size={20}/> Sign in using Facebook Account
       </CustomButton>
+      </DataContainer>
     </BodyContainer>
   );
 };

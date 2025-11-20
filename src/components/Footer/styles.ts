@@ -5,7 +5,6 @@ export const FooterContainer = styled.footer`
   position: fixed;
   bottom:0;
   width: 100%;
-  max-width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +22,5 @@ export const FooterContainer = styled.footer`
     width: 100%;
     background-color: black !important;
     height: 16px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
   }
 `;

@@ -1,12 +1,8 @@
 import React from "react";
-import { BodyContainer, CustomButton } from "../../styles/global";
-import { DateContainer, EntryList } from "./styles";
-import Status from "../../components/Status";
-import MenuBar from "../../components/MenuBar";
+import { BodyContainer, CustomButton, DataContainer } from "../../styles/global";
 import Card from "../../components/Card";
-import { useStatus } from "../../hooks/useStatus";
 import uuid from "react-uuid";
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { EntryList } from "./styles";
 import { database} from "../../services/firebase";
 import {collection, query, where, getDocs, doc, addDoc, setDoc, deleteDoc} from 'firebase/firestore';
 import { UserAuth } from '../../contexts/AuthContext';
@@ -20,28 +16,12 @@ interface IEntry {
 }
 
 const Dashboard: React.FC = () => {
-  const startDate = new Date().toISOString().split("T")[0];
-  const [selectedDate, setSelectedDate] = React.useState<string>(startDate);
   const [entries, setEntries] = React.useState<IEntry[]>([]);
-  const [inputStatus, setInputStatus] = useStatus(null);
-  const dateRef = React.useRef<HTMLInputElement>(null);
-  const [showAll, setShowAll] = React.useState<boolean>(false);
   const {user} = UserAuth();
 
-  const handleDateIncDec = (days: number) => {
-    const date = new Date(selectedDate);
-    date.setDate(date.getDate() + days);
-    const dateStr = date.toISOString().split("T")[0];
-    setSelectedDate(dateStr);
-    if (dateRef !== null && dateRef.current !== null) {
-      dateRef.current.value = dateStr;
-    }
-  };
-
-  const handleDateChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedDate(event.target.value);
-  };
-
+  const selectedDate = new Date().toISOString().split("T")[0];
+  const [showAll, setShowAll] = React.useState<boolean>(false);
+ 
   async function handleAddNewEntry(event: React.FormEvent<HTMLButtonElement>) {
     const newEntry: IEntry = {
       uid: user.uid,
@@ -109,19 +89,7 @@ const Dashboard: React.FC = () => {
   let count = 0;
   return (
       <BodyContainer>
-      <MenuBar/>
-      <Status status={inputStatus} />
-      <DateContainer>
-      <input type={'checkbox'} onChange={(e) => setShowAll(e.target.checked)}></input>
-      <FiArrowLeft size={30} onClick={() => handleDateIncDec(-1)}/>
-        <input
-          ref={dateRef}
-          type="date"
-          defaultValue={startDate}
-          onChange={handleDateChanged}
-        ></input>
-      <FiArrowRight size={30} onClick={() => handleDateIncDec(1)}/>
-      </DateContainer>
+      <DataContainer>
       <EntryList>
         {entries.map((entry, index) => {
           console.log(entry)
@@ -140,6 +108,7 @@ const Dashboard: React.FC = () => {
         })}
       </EntryList>
       <CustomButton color="#04d361" onClick={handleAddNewEntry}>Add New</CustomButton>
+      </DataContainer>
       </BodyContainer>
   );
 };

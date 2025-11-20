@@ -18,6 +18,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 body, input, textarea, select, button {
@@ -28,7 +30,6 @@ body, input, textarea, select, button {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 10px;
 }
 
 button {
@@ -44,15 +45,27 @@ a{
 export const BodyContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding: 6px;
-  margin-bottom: 10px;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
 `
+export const DataContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  min-height: 90vh;
+  padding: 10px;
+  max-width: 990px;
+  background: #e0e0e5;
+`
+
 
 export const AppContainer = styled.div`
   min-height: 90vh;
-  max-width: 900px;
-  padding-bottom: 30px;
-  width: 900px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
