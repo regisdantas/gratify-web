@@ -1,8 +1,8 @@
 export const isJsonString = (myString: string) => {
   try {
-      JSON.parse(myString);
+    JSON.parse(myString);
   } catch (e) {
-      return false;
+    return false;
   }
   return true;
-}
+};

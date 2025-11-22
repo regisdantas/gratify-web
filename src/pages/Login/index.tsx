@@ -1,55 +1,67 @@
 import React, { useEffect } from "react";
-import { BodyContainer, CustomButton, DataContainer } from "../../styles/global";
+import {
+  BodyContainer,
+  CustomButton,
+  DataContainer,
+} from "../../styles/global";
 import { useStatus } from "../../hooks/useStatus";
-import {BsFacebook, BsGoogle} from 'react-icons/bs';
-import {MdEmail} from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
-import {UserAuth} from '../../contexts/AuthContext';
+import { BsFacebook, BsGoogle } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../contexts/AuthContext";
 
 const Login: React.FC = () => {
-  const {user, signInWithGoogle, signInWithFacebook} = UserAuth();
+  const { user, signInWithGoogle, signInWithFacebook } = UserAuth();
   const [inputStatus, setInputStatus] = useStatus(null);
   const navigate = useNavigate();
   const handleGoogleSignIn = async () => {
-    try{
+    try {
       await signInWithGoogle();
-    } catch (error)  {
+    } catch (error) {
       console.log(error);
-      setInputStatus({type: "error", fields: "email", message: (error instanceof Error)?error.message:"Unknown error"});
+      setInputStatus({
+        type: "error",
+        fields: "email",
+        message: error instanceof Error ? error.message : "Unknown error",
+      });
     }
-  }
+  };
 
   const handleFacebookSignIn = async () => {
-    try{
+    try {
       await signInWithFacebook();
-    } catch (error)  {
+    } catch (error) {
       console.log(error);
-      setInputStatus({type: "error", fields: "email", message: (error instanceof Error)?error.message:"Unknown error"});
+      setInputStatus({
+        type: "error",
+        fields: "email",
+        message: error instanceof Error ? error.message : "Unknown error",
+      });
     }
-  }
+  };
 
   useEffect(() => {
     if (user !== null && user.displayName !== undefined) {
-      navigate('/dashboard');
+      navigate("/dashboard");
     }
   }, [user]);
 
   return (
     <BodyContainer>
       <DataContainer>
-      <form action="submit">
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <CustomButton color={"#04d361"}>
-          <MdEmail /> Sign in with Email
+        <form action="submit">
+          <input type="text" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <CustomButton color={"#04d361"}>
+            <MdEmail /> Sign in with Email
+          </CustomButton>
+        </form>
+        <CustomButton color={"#DB4437"} onClick={handleGoogleSignIn}>
+          <BsGoogle size={20} /> Sign in using Google Account
         </CustomButton>
-      </form>
-      <CustomButton color={"#DB4437"} onClick={handleGoogleSignIn}>
-        <BsGoogle size={20}/> Sign in using Google Account
-      </CustomButton>
-      <CustomButton color={"#3b5998"} onClick={handleFacebookSignIn}>
-        <BsFacebook size={20}/> Sign in using Facebook Account
-      </CustomButton>
+        <CustomButton color={"#3b5998"} onClick={handleFacebookSignIn}>
+          <BsFacebook size={20} /> Sign in using Facebook Account
+        </CustomButton>
       </DataContainer>
     </BodyContainer>
   );

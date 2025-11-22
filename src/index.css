@@ -1,5 +1,4 @@
 @font-face {
-  font-family: "Holiday";   /*Can be any text*/
-  src: local("Holiday"),
-    url("./assets/fonts/holiday.ttf") format("truetype");
+  font-family: "Holiday"; /*Can be any text*/
+  src: local("Holiday"), url("./assets/fonts/holiday.ttf") format("truetype");
 }

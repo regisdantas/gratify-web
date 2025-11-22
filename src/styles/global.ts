@@ -1,5 +1,5 @@
-import styled, { css, createGlobalStyle } from 'styled-components';
-import { shade } from 'polished';
+import styled, { css, createGlobalStyle } from "styled-components";
+import { shade } from "polished";
 
 export const GlobalStyles = createGlobalStyle`
 * {
@@ -51,8 +51,7 @@ export const BodyContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-`
+`;
 export const DataContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -60,8 +59,7 @@ export const DataContainer = styled.div`
   padding: 10px;
   max-width: 990px;
   background: #e0e0e5;
-`
-
+`;
 
 export const AppContainer = styled.div`
   min-height: 90vh;
@@ -70,7 +68,8 @@ export const AppContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  input, button {
+  input,
+  button {
     margin-left: auto;
     margin-right: auto;
 
@@ -96,7 +95,7 @@ export const AppContainer = styled.div`
     font-weight: bold;
     transition: background-color 0.2s;
     &:hover {
-      background-color: ${shade(0.2, '#04d361')};
+      background-color: ${shade(0.2, "#04d361")};
     }
   }
 `;
@@ -112,7 +111,7 @@ export const CustomButton = styled.button<CustomButtonProps>`
     margin-left: 10px;
   }
 
-  ${props =>
+  ${(props) =>
     props.color &&
     css`
       background-color: ${props.color} !important;
@@ -120,9 +119,6 @@ export const CustomButton = styled.button<CustomButtonProps>`
         background-color: ${shade(0.2, props.color)} !important;
       }
     `}
-
 `;
 
-export const EntryList = styled.div`
-
-`;
+export const EntryList = styled.div``;

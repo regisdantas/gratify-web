@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Title = styled.h1`
   font-size: 36px;
@@ -54,7 +54,8 @@ export const CardContainer = styled.div`
       gap: 5px;
       align-items: center;
     }
-    input, select {
+    input,
+    select {
       width: fit-content;
       margin: 0px;
       height: 30px;

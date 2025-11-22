@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -8,11 +7,11 @@ export const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   width: 100%;
-  text-align:center;
+  text-align: center;
   background: #f0f0f5;
   margin: 0;
   padding: 0;
-  .topbar{
+  .topbar {
     font-size: 12px;
     letter-spacing: 7px;
     text-transform: uppercase;
@@ -38,8 +37,8 @@ export const HeaderContainer = styled.header`
       margin: 0;
     }
   }
-  
-  .titlebar h1{
+
+  .titlebar h1 {
     font-family: Holiday;
     font-size: 36px;
     font-weight: bolder;
@@ -61,7 +60,7 @@ export const HeaderContainer = styled.header`
     display: flex;
     width: 100%;
     height: 56px;
-    background: #04D361;
+    background: #04d361;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
@@ -80,10 +79,10 @@ export const HeaderContainer = styled.header`
   }
 
   img {
-      height: 56px;
-      border-radius: 0%;
-      margin: 10px;
-      margin-left: 30px;
+    height: 56px;
+    border-radius: 0%;
+    margin: 10px;
+    margin-left: 30px;
   }
 `;
 

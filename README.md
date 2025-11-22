@@ -6,6 +6,7 @@ A modern daily journaling web app built with React, TypeScript, REST APIs and Fi
 
 ## ▶️ [Use the App](https://regisdantas.github.io/gratify-journalling/#/dashboard)
 
-## 👤 Author  
+## 👤 Author
+
 https://github.com/regisdantas \
 https://www.linkedin.com/in/regismdantas

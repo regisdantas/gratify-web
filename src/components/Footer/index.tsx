@@ -1,5 +1,5 @@
-import React from 'react';
-import { FooterContainer } from './styles';
+import React from "react";
+import { FooterContainer } from "./styles";
 
 interface IFooterProps {
   footPhrase: string;
@@ -8,8 +8,8 @@ interface IFooterProps {
 const Footer: React.FC<IFooterProps> = ({ footPhrase }: IFooterProps) => {
   return (
     <FooterContainer>
-        <p>{footPhrase}</p>
-        <div className='bottombar'></div>
+      <p>{footPhrase}</p>
+      <div className="bottombar"></div>
     </FooterContainer>
   );
 };
