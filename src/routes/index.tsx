@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
+import { DashboardContextProvider } from "../contexts/DashboardContext";
 
 const Login = React.lazy(
   () =>
@@ -36,7 +37,9 @@ export const Router: React.FC = () => {
         <Route
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <DashboardContextProvider>
+                <Dashboard />
+              </DashboardContextProvider>
             </ProtectedRoute>
           }
           path="/"
@@ -44,7 +47,9 @@ export const Router: React.FC = () => {
         <Route
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <DashboardContextProvider>
+                <Dashboard />
+              </DashboardContextProvider>
             </ProtectedRoute>
           }
           path="/dashboard"

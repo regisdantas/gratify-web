@@ -12,10 +12,11 @@ interface ICardProps {
 }
 
 const defaultContent = {
+  title: "",
   type: "record",
   text: "",
   color: "red",
-  fixed: false,
+  pinned: false,
 };
 
 const Card: React.FC<ICardProps> = ({
@@ -26,6 +27,7 @@ const Card: React.FC<ICardProps> = ({
   onChangeContent,
 }: ICardProps) => {
   const textRef = React.useRef<HTMLSpanElement>(null);
+  const titleRef = React.useRef<HTMLSpanElement>(null);
 
   const objContent = isJsonString(content)
     ? JSON.parse(content)
@@ -35,12 +37,12 @@ const Card: React.FC<ICardProps> = ({
       <div className="ContentContainer">
         <header>
           <strong>
-            {objContent.fixed ? (
-              <TbPinnedOff size={24} />
+            {objContent.pinned ? (
+              <TbPinned size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: false}))}/>
             ) : (
-              <TbPinned size={24} />
+              <TbPinnedOff size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: true}))} />
             )}
-            {/* <input type={'checkbox'} checked={objContent.fixed} onChange={e => onChangeContent(id, JSON.stringify({...objContent, fixed: e.target.checked}))} /> */}
+            {/* <input type={'checkbox'} checked={objContent.pinned} onChange={e => onChangeContent(id, JSON.stringify({...objContent, pinned: e.target.checked}))} /> */}
             <select
               value={objContent.type}
               onChange={(e) =>
@@ -55,7 +57,21 @@ const Card: React.FC<ICardProps> = ({
               <option value="journal">Journal</option>
             </select>
             <strong>
-              {number}# {id}
+              {number}#
+              <span
+                ref={titleRef}
+                role="textbox"
+                contentEditable
+                data-placeholder="Give me a name"
+                onBlur={(e) =>
+                  onChangeContent(
+                    id,
+                    JSON.stringify({ ...objContent, title: e.target.innerText })
+                  )
+                }
+              >
+                {objContent.title}
+              </span>
             </strong>
           </strong>
 

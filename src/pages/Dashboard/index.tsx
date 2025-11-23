@@ -6,7 +6,7 @@ import {
 } from "../../styles/global";
 import Card from "../../components/Card";
 import uuid from "react-uuid";
-import { EntryList } from "./styles";
+import { EntryList, DateContainer, MenuBarContainer } from "./styles";
 import { database } from "../../services/firebase";
 import {
   collection,
@@ -20,6 +20,10 @@ import {
 } from "firebase/firestore";
 import { UserAuth } from "../../contexts/AuthContext";
 import { isJsonString } from "../../utils";
+import { useDashboard } from "../../contexts/DashboardContext";
+import {HeaderPortal} from "../../components/HeaderPortal";
+import userImg from "../../assets/user.png";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 interface IEntry {
   uid: string;
@@ -29,11 +33,33 @@ interface IEntry {
 }
 
 const Dashboard: React.FC = () => {
+  const { selectedDate, setSelectedDate, showAll, setShowAll } = useDashboard();
   const [entries, setEntries] = React.useState<IEntry[]>([]);
-  const { user } = UserAuth();
+  const { user, logOut } = UserAuth();
+  const startDate = new Date().toISOString().split("T")[0];
+  const dateRef = React.useRef<HTMLInputElement>(null);
 
-  const selectedDate = new Date().toISOString().split("T")[0];
-  const [showAll, setShowAll] = React.useState<boolean>(false);
+  const handleLogout = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDateIncDec = (days: number) => {
+    const date = new Date(selectedDate);
+    date.setDate(date.getDate() + days);
+    const dateStr = date.toISOString().split("T")[0];
+    setSelectedDate(dateStr);
+    if (dateRef !== null && dateRef.current !== null) {
+      dateRef.current.value = dateStr;
+    }
+  };
+
+  const handleDateChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedDate(event.target.value);
+  };
 
   async function handleAddNewEntry(event: React.FormEvent<HTMLButtonElement>) {
     const newEntry: IEntry = {
@@ -78,6 +104,7 @@ const Dashboard: React.FC = () => {
   };
 
   const handleChangeEntry = async (id: string, content: string) => {
+    console.log("changed", id, content);
     const newEntries = entries.map((entry) => {
       if (entry.id === id) {
         entry.content = content;
@@ -105,10 +132,43 @@ const Dashboard: React.FC = () => {
   let count = 0;
   return (
     <BodyContainer>
+      <HeaderPortal>
+        {user !== null &&
+          user.displayName !== undefined &&
+          user.photoURL !== null &&
+          user.photoURL !== undefined ? (
+            <DateContainer>
+              {/* <input type={'checkbox'} onChange={(e) => setShowAll(e.target.checked)}></input> */}
+              <FiArrowLeft size={30} onClick={() => handleDateIncDec(-1)} />
+              <input
+                ref={dateRef}
+                type="date"
+                defaultValue={startDate}
+                onChange={handleDateChanged}
+              />
+              <FiArrowRight size={30} onClick={() => handleDateIncDec(1)} />
+            </DateContainer>
+          ) : null}
+          {user !== null &&
+        user.displayName !== undefined &&
+        user.photoURL !== null &&
+        user.photoURL !== undefined ? (
+          <MenuBarContainer>
+            <img
+              src={user.photoURL ? user.photoURL : userImg}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = userImg;
+              }}
+              alt="User photograph"
+              onClick={() => handleLogout()}
+            />
+          </MenuBarContainer>
+        ) : null}
+      </HeaderPortal>
       <DataContainer>
         <EntryList>
           {entries.map((entry, index) => {
-            console.log(entry);
             return showAll ||
               entry.date === selectedDate ||
               (isJsonString(entry.content) &&
