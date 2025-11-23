@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   position: fixed;
+  user-select: none;
   bottom: 0;
   width: 100%;
   display: flex;
