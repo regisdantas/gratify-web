@@ -24,6 +24,7 @@ import { useDashboard } from "../../contexts/DashboardContext";
 import {HeaderPortal} from "../../components/HeaderPortal";
 import userImg from "../../assets/user.png";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 interface IEntry {
   uid: string;
@@ -138,15 +139,19 @@ const Dashboard: React.FC = () => {
           user.photoURL !== null &&
           user.photoURL !== undefined ? (
             <DateContainer>
-              {/* <input type={'checkbox'} onChange={(e) => setShowAll(e.target.checked)}></input> */}
-              <FiArrowLeft size={30} onClick={() => handleDateIncDec(-1)} />
+              <FiArrowLeft size={36} onClick={() => handleDateIncDec(-1)} />
               <input
                 ref={dateRef}
                 type="date"
                 defaultValue={startDate}
                 onChange={handleDateChanged}
               />
-              <FiArrowRight size={30} onClick={() => handleDateIncDec(1)} />
+              <FiArrowRight size={36} onClick={() => handleDateIncDec(1)} />
+              {showAll ? (
+                <FiEyeOff size={36} onClick={() => setShowAll(false)} />
+              ) : (
+                <FiEye size={36} onClick={() => setShowAll(true)} />
+              ) }
             </DateContainer>
           ) : null}
           {user !== null &&
@@ -172,7 +177,7 @@ const Dashboard: React.FC = () => {
             return showAll ||
               entry.date === selectedDate ||
               (isJsonString(entry.content) &&
-                JSON.parse(entry.content).fixed === true) ? (
+                JSON.parse(entry.content).pinned === true) ? (
               <Card
                 key={entry.id}
                 id={entry.id}

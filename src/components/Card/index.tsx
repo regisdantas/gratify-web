@@ -38,9 +38,9 @@ const Card: React.FC<ICardProps> = ({
         <header>
           <strong>
             {objContent.pinned ? (
-              <TbPinned size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: false}))}/>
+              <TbPinnedOff size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: false}))}/>
             ) : (
-              <TbPinnedOff size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: true}))} />
+              <TbPinned size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: true}))} />
             )}
             {/* <input type={'checkbox'} checked={objContent.pinned} onChange={e => onChangeContent(id, JSON.stringify({...objContent, pinned: e.target.checked}))} /> */}
             <select
