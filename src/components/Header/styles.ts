@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   position: fixed;
+  user-select: none;
   top: 0;
   left: 0;
   display: flex;
@@ -12,7 +13,6 @@ export const HeaderContainer = styled.header`
   margin: 0;
   padding: 0;
   .topbar {
-    user-select: none;
     font-size: 12px;
     letter-spacing: 7px;
     text-transform: uppercase;
@@ -29,7 +29,6 @@ export const HeaderContainer = styled.header`
 
   .titlebar .logo-title {
     cursor: pointer;
-    user-select: none;
     width: 100px;
     margin-left: 10px;
     display: flex;
