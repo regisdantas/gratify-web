@@ -148,9 +148,9 @@ const Dashboard: React.FC = () => {
               />
               <FiArrowRight title="Next day" size={36} onClick={() => handleDateIncDec(1)} />
               {showAll ? (
-                <FiEyeOff title="Hide all" size={36} onClick={() => setShowAll(false)} />
+                <FiEyeOff title="Show only selected day" size={36} onClick={() => setShowAll(false)} />
               ) : (
-                <FiEye title="Show all" size={36} onClick={() => setShowAll(true)} />
+                <FiEye title="Show all notes" size={36} onClick={() => setShowAll(true)} />
               ) }
             </DateContainer>
           ) : null}
