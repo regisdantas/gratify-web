@@ -105,7 +105,6 @@ const Dashboard: React.FC = () => {
   };
 
   const handleChangeEntry = async (id: string, content: string) => {
-    console.log("changed", id, content);
     const newEntries = entries.map((entry) => {
       if (entry.id === id) {
         entry.content = content;
@@ -139,18 +138,19 @@ const Dashboard: React.FC = () => {
           user.photoURL !== null &&
           user.photoURL !== undefined ? (
             <DateContainer>
-              <FiArrowLeft size={36} onClick={() => handleDateIncDec(-1)} />
+              <FiArrowLeft title="Previous day" size={36} onClick={() => handleDateIncDec(-1)} />
               <input
+                title="Select date"
                 ref={dateRef}
                 type="date"
                 defaultValue={startDate}
                 onChange={handleDateChanged}
               />
-              <FiArrowRight size={36} onClick={() => handleDateIncDec(1)} />
+              <FiArrowRight title="Next day" size={36} onClick={() => handleDateIncDec(1)} />
               {showAll ? (
-                <FiEyeOff size={36} onClick={() => setShowAll(false)} />
+                <FiEyeOff title="Hide all" size={36} onClick={() => setShowAll(false)} />
               ) : (
-                <FiEye size={36} onClick={() => setShowAll(true)} />
+                <FiEye title="Show all" size={36} onClick={() => setShowAll(true)} />
               ) }
             </DateContainer>
           ) : null}
@@ -160,6 +160,7 @@ const Dashboard: React.FC = () => {
         user.photoURL !== undefined ? (
           <MenuBarContainer>
             <img
+              title="Logout"
               src={user.photoURL ? user.photoURL : userImg}
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null;
@@ -191,7 +192,7 @@ const Dashboard: React.FC = () => {
             );
           })}
         </EntryList>
-        <CustomButton color="#04d361" onClick={handleAddNewEntry}>
+        <CustomButton title="Add new note" color="#04d361" onClick={handleAddNewEntry}>
           Add New
         </CustomButton>
       </DataContainer>

@@ -38,12 +38,13 @@ const Card: React.FC<ICardProps> = ({
         <header>
           <strong>
             {objContent.pinned ? (
-              <TbPinnedOff size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: false}))}/>
+              <TbPinnedOff title="Unpin" size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: false}))}/>
             ) : (
-              <TbPinned size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: true}))} />
+              <TbPinned title="Pin" size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: true}))} />
             )}
             {/* <input type={'checkbox'} checked={objContent.pinned} onChange={e => onChangeContent(id, JSON.stringify({...objContent, pinned: e.target.checked}))} /> */}
             <select
+              title="Note type"
               value={objContent.type}
               onChange={(e) =>
                 onChangeContent(
@@ -58,6 +59,7 @@ const Card: React.FC<ICardProps> = ({
             </select>
             <strong>
               <span
+                title="Note name"
                 ref={titleRef}
                 role="textbox"
                 contentEditable
@@ -74,9 +76,10 @@ const Card: React.FC<ICardProps> = ({
             </strong>
           </strong>
 
-          <FiTrash2 onClick={(e) => onDeleteCard(id)}></FiTrash2>
+          <FiTrash2  title="Delete note" onClick={(e) => onDeleteCard(id)}></FiTrash2>
         </header>
         <span
+          title="Note content"
           ref={textRef}
           role="textbox"
           contentEditable
