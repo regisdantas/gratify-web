@@ -26,6 +26,10 @@ body, input, textarea, select, button {
   font: 400 1rem "Roboto", sans-serif;
 }
 
+input, textarea, select, button {
+  padding: 0px 10px 0px 10px;
+}
+
 #root {
   display: flex;
   justify-content: center;
@@ -33,6 +37,7 @@ body, input, textarea, select, button {
 }
 
 button {
+  user-select: none;
   cursor: pointer;
 }
 

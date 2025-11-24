@@ -57,7 +57,6 @@ const Card: React.FC<ICardProps> = ({
               <option value="journal">Journal</option>
             </select>
             <strong>
-              {number}#
               <span
                 ref={titleRef}
                 role="textbox"
