@@ -57,9 +57,9 @@ const Card: React.FC<ICardProps> = ({
                 )
               }
             >
-              <option value="note">Note</option>
-              <option value="gratitude">Gratitude</option>
-              <option value="journal">Journal</option>
+              <option value="note">📝</option>
+              <option value="gratitude">🙏</option>
+              <option value="journal">📓</option>
             </select>
             <strong>
               <span

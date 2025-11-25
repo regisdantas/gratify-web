@@ -29,7 +29,12 @@ body, input, textarea, select, button {
 }
 
 input, textarea, select, button {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 4px 0px 4px;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 #root {
