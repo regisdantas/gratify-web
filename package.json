@@ -1,6 +1,7 @@
 {
   "name": "gratify-journaling",
   "version": "0.1.0",
+  "homepage": "https://gratify-journaling-gjkgk.ondigitalocean.app",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^4.5.0",
