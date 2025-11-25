@@ -138,7 +138,7 @@ export const FloatingButton = styled.button<CustomButtonProps>`
   width: 50px !important;
   border-radius: 50% !important;
   height: 50px !important;
-  border: 2px solid #e0e0e5 !important;
+  border: 3px solid #e0e0e5 !important;
 
   svg {
     float: left;

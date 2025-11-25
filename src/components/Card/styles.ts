@@ -57,11 +57,14 @@ export const CardContainer = styled.div`
     select {
       -webkit-appearance: none;
       appearance: none;
+      background: transparent;
+      color: gray !important;
       width: fit-content;
       margin: 0px;
       height: 30px;
       color: black;
       border: none;
+      padding: 0px;
     }
 
     strong {

@@ -47,7 +47,7 @@ const Card: React.FC<ICardProps> = ({
               <TbPinned title="Pin note" size={24} onClick={() => onChangeContent(id, JSON.stringify({...objContent, pinned: true}))} />
             )}
             {/* <input type={'checkbox'} checked={objContent.pinned} onChange={e => onChangeContent(id, JSON.stringify({...objContent, pinned: e.target.checked}))} /> */}
-            <select
+            {/* <select
               title="Note type"
               value={objContent.type}
               onChange={(e) =>
@@ -60,7 +60,7 @@ const Card: React.FC<ICardProps> = ({
               <option value="note">📝</option>
               <option value="gratitude">🙏</option>
               <option value="journal">📓</option>
-            </select>
+            </select> */}
             <strong>
               <span
                 title="Note name"
