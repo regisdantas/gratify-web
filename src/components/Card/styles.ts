@@ -61,13 +61,13 @@ export const CardContainer = styled.div`
       height: 30px;
       color: black;
       border: none;
+      padding: 0px 4px 0px 10px;
     }
 
     strong {
       color: darkgray;
       width: 100%;
       display: flex;
-      gap: 10px;
       align-items: center;
     }
 

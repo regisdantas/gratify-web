@@ -28,9 +28,6 @@ body, input, textarea, select, button {
   font: 400 1rem "Roboto", sans-serif;
 }
 
-input, textarea, select, button {
-  padding: 0px 4px 0px 4px;
-}
 
 select:focus {
   outline: none;
