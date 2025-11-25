@@ -126,4 +126,29 @@ export const CustomButton = styled.button<CustomButtonProps>`
     `}
 `;
 
+export const FloatingButton = styled.button<CustomButtonProps>`
+  position: fixed;
+  bottom: 40px;
+  right: calc(50% - 25px);
+  display: block !important;
+  width: 50px !important;
+  border-radius: 50% !important;
+  height: 50px !important;
+  border: 2px solid #e0e0e5 !important;
+
+  svg {
+    float: left;
+    margin-left: 10px;
+  }
+
+  ${(props) =>
+    props.color &&
+    css`
+      background-color: ${props.color} !important;
+      &:hover {
+        background-color: ${shade(0.2, props.color)} !important;
+      }
+    `}
+`;
+
 export const EntryList = styled.div``;

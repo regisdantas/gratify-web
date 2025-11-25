@@ -6,6 +6,7 @@ import { TbPinned, TbPinnedOff } from "react-icons/tb";
 interface ICardProps {
   id: string;
   number: number;
+  date: string;
   content: string;
   onDeleteCard: any;
   onChangeContent: any;
@@ -22,6 +23,7 @@ const defaultContent = {
 const Card: React.FC<ICardProps> = ({
   id,
   number,
+  date,
   content,
   onDeleteCard,
   onChangeContent,
@@ -73,6 +75,7 @@ const Card: React.FC<ICardProps> = ({
               >
                 {objContent.title}
               </span>
+              <span>{date}</span>
             </strong>
           </strong>
 

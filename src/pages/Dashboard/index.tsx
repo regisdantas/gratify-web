@@ -1,7 +1,7 @@
 import React from "react";
 import {
   BodyContainer,
-  CustomButton,
+  FloatingButton,
   DataContainer,
 } from "../../styles/global";
 import Card from "../../components/Card";
@@ -31,6 +31,7 @@ interface IEntry {
   id: string;
   content: string;
   date: string;
+  createdAt: string;
 }
 
 const Dashboard: React.FC = () => {
@@ -68,8 +69,16 @@ const Dashboard: React.FC = () => {
       id: uuid(),
       content: "",
       date: selectedDate,
+      createdAt: new Date().toISOString(),
     };
     const newEntries = [...entries, newEntry];
+    newEntries.sort((a, b) => {
+      if (a.date > b.date) return -1;
+      if (a.date < b.date) return 1;
+      if (a.createdAt > b.createdAt) return -1;
+      if (a.createdAt < b.createdAt) return 1;
+      return 0;
+    });
     setEntries(newEntries);
     const userDocRef = doc(database, "users", user.uid);
     const entriesRef = collection(userDocRef, "entries");
@@ -82,7 +91,18 @@ const Dashboard: React.FC = () => {
     const querySnapshot = await getDocs(entriesRef);
     const entries: IEntry[] = [];
     querySnapshot.forEach((doc) => {
-      entries.push(doc.data() as IEntry);
+      let newEntry = doc.data() as IEntry;
+      if (!newEntry.createdAt) {
+        newEntry.createdAt = newEntry.date;
+      }
+      entries.push(newEntry);
+    });
+    entries.sort((a, b) => {
+      if (a.date > b.date) return -1;
+      if (a.date < b.date) return 1;
+      if (a.createdAt > b.createdAt) return -1;
+      if (a.createdAt < b.createdAt) return 1;
+      return 0;
     });
     setEntries(entries);
   }
@@ -182,6 +202,7 @@ const Dashboard: React.FC = () => {
               <Card
                 key={entry.id}
                 id={entry.id}
+                date={entry.date}
                 number={(count = count + 1)}
                 content={entry.content}
                 onDeleteCard={handleDeleteEntry}
@@ -192,9 +213,9 @@ const Dashboard: React.FC = () => {
             );
           })}
         </EntryList>
-        <CustomButton title="Add new note" color="#04d361" onClick={handleAddNewEntry}>
-          Add New
-        </CustomButton>
+        <FloatingButton title="Add new note" color="#04d361" onClick={handleAddNewEntry}>
+          +
+        </FloatingButton>
       </DataContainer>
     </BodyContainer>
   );
