@@ -54,14 +54,14 @@ export const CardContainer = styled.div`
       gap: 5px;
       align-items: center;
     }
-    input,
     select {
+      -webkit-appearance: none;
+      appearance: none;
       width: fit-content;
       margin: 0px;
       height: 30px;
       color: black;
       border: none;
-      padding: 0px 4px 0px 10px;
     }
 
     strong {
