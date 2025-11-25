@@ -3,6 +3,8 @@ import { CardContainer } from "./styles";
 import { FiTrash2 } from "react-icons/fi";
 import { isJsonString } from "../../utils";
 import { TbPinned, TbPinnedOff } from "react-icons/tb";
+import { formatDate } from "../../utils";
+
 interface ICardProps {
   id: string;
   number: number;
@@ -75,7 +77,7 @@ const Card: React.FC<ICardProps> = ({
               >
                 {objContent.title}
               </span>
-              <span>{date}</span>
+              <span>{formatDate(date)}</span>
             </strong>
           </strong>
 

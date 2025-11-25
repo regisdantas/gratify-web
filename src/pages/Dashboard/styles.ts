@@ -7,6 +7,8 @@ export const EntryList = styled.div`
 `;
 
 export const DateContainer = styled.div`
+position: relative;
+bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: center;

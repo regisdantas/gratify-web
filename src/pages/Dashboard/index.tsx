@@ -71,6 +71,7 @@ const Dashboard: React.FC = () => {
       date: selectedDate,
       createdAt: new Date().toISOString(),
     };
+    scrollToTop();
     const newEntries = [...entries, newEntry];
     newEntries.sort((a, b) => {
       if (a.date > b.date) return -1;
@@ -110,6 +111,13 @@ const Dashboard: React.FC = () => {
   React.useEffect(() => {
     fetchEntries();
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const handleDeleteEntry = async (id: string) => {
     const newEntries = entries.filter((entry) => entry.id !== id);
