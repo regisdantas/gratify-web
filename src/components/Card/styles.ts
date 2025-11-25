@@ -103,4 +103,11 @@ export const CardContainer = styled.div`
       }
     }
   }
+  .ContentContainer .date {
+    width: auto;
+    align-self: flex-end;
+    padding: 4px 10px 4px 10px;
+    color: gray;
+    align-items: flex-end;
+  }
 `;

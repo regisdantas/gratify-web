@@ -77,7 +77,6 @@ const Card: React.FC<ICardProps> = ({
               >
                 {objContent.title}
               </span>
-              <span>{formatDate(date)}</span>
             </strong>
           </strong>
 
@@ -99,6 +98,7 @@ const Card: React.FC<ICardProps> = ({
         >
           {objContent.text}
         </span>
+        <span className="date">{formatDate(date)}</span>
       </div>
     </CardContainer>
   );
